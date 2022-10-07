@@ -3,7 +3,7 @@ h1 {
     font-size: 50px;
     text-align: center;
 }
-* {
+body {
     background-color:rgb(243,208,255) ;
 }
 #add {
@@ -11,7 +11,7 @@ h1 {
     }
 
 #list_div {
-    background-color: white;
+    background-color:white;
     width: 500px;
     height: 400px;
     margin: auto;

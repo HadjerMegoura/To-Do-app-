@@ -1,18 +1,28 @@
 {% load static %}
-<!DOCTYPE html>
+
 <head>
     <link rel="stylesheet"  href="{% static 'tasks/index.css' %}">
 </head>
 <body>
     <div id="list_div">
 <h1>To Do</h1>
-<div id="add">
-    <input id="text" type="text" placeholder="add note">
+<form id="add" method="post" action="/">
+    {% csrf_token %}
+    {{form.text}}
     <input id="SubBtn" type="submit" value="Add">
-</div>
+</form>
 <ul id="notes_list">
   {% for note in notes %}
-  <li>{{note.text}}</li>
+  <li>
+    {% if note.completed == True %}
+   <strike> {{note.text}}</strike>
+   {% else %}
+   <span>{{note.text}}</span>
+   {% endif %}
+   
+    <a href="{% url 'update' note.id %}">Update</a>
+    <a href="{% url 'delete' note.id %}">Delete</a>
+</li>
   {% endfor %}
 </ul>
 </div>
